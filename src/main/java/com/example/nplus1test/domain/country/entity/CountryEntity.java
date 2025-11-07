@@ -20,6 +20,7 @@ public class CountryEntity {
     @Column(unique = true)
     private String country;
 
+    @BatchSize(size = 250)
     @OneToMany(mappedBy = "countryEntity")
     private List<CityEntity> cityEntities = new ArrayList<>();
 

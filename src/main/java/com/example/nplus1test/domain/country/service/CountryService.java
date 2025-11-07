@@ -4,6 +4,8 @@ import com.example.nplus1test.domain.country.entity.CityEntity;
 import com.example.nplus1test.domain.country.entity.CountryEntity;
 import com.example.nplus1test.domain.country.repository.CityRepository;
 import com.example.nplus1test.domain.country.repository.CountryRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,6 +52,8 @@ public class CountryService {
     }
 
     public List<CountryEntity> readCountryFetch(){
-        return countryRepository.findAllFetch();
+        Pageable pageable = PageRequest.of(0,5);
+//      return countryRepository.findAllFetch(pageable);
+        return countryRepository.findAll(pageable).stream().toList();
     }
 }
